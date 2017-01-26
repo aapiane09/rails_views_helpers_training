@@ -1,6 +1,6 @@
 <h1>New Recipe</h1>
 <hr>
-<form action="/recipes" method="post">
+<!-- <form action="/recipes" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <div class="form-group">
     <label for="recipe_name">Name</label>
@@ -11,4 +11,12 @@
     <textarea name="recipe[instructions]" class="form-control" id="recipe_instructions" placeholder="Type your recipe instructions here"></textarea>
   </div>
   <input type="submit" value="Save Recipe" class="btn btn-block btn-default">
-</form>
+</form> -->
+
+<%= form_for @recipe, url: {action: "create"}, html: {class: "form-control"} do |f| %>
+  <label for="recipe_name">Name</label>
+  <%= f.text_field :name, class: "form-control", placeholder: "Recipe name" %>
+  <label for="recipe_instructions">Instructions</label>
+  <%= f.text_area :instructions, class: "form-control", placeholder: "Type your recipe instructions here" %>
+  <%= f.submit "Save Recipe", class: "btn btn-block btn-default"%>
+<% end %>
